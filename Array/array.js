@@ -27,9 +27,9 @@ let sortedSquare = (array) => {
 }
 
 console.log(sortedSquare([]));
-console.log(sortedSquare([1,3,5]));
-console.log(sortedSquare([0,5,6]));
-console.log(sortedSquare([-3,1,2,7]));
+console.log(sortedSquare([1, 3, 5]));
+console.log(sortedSquare([0, 5, 6]));
+console.log(sortedSquare([-3, 1, 2, 7]));
 console.log(sortedSquare([-7, -3, 2, 3, 11]));
 
 
@@ -38,20 +38,20 @@ console.log(sortedSquare([-7, -3, 2, 3, 11]));
 
 // ^ Second method 
 
-let sortedSquare_by_method2=(array)=>{
-    let newArray =[]
-    let left_pointer =0;
-    let right_pointer = array.length-1;
+let sortedSquare_by_method2 = (array) => {
+    let newArray = []
+    let left_pointer = 0;
+    let right_pointer = array.length - 1;
 
-    for(let i=array.length-1; i>=0; i--){
-        let left_squared = array[left_pointer]*array[left_pointer]
-        let right_squard = array[right_pointer]*array[right_pointer]
-        
-        if(left_squared>right_squard){
-            newArray[i]=left_squared
+    for (let i = array.length - 1; i >= 0; i--) {
+        let left_squared = array[left_pointer] * array[left_pointer]
+        let right_squard = array[right_pointer] * array[right_pointer]
+
+        if (left_squared > right_squard) {
+            newArray[i] = left_squared
             left_pointer++
-        }else{
-            newArray[i]=right_squard;
+        } else {
+            newArray[i] = right_squard;
             right_pointer--
         }
     }
@@ -61,7 +61,38 @@ let sortedSquare_by_method2=(array)=>{
 
 console.log("-----------methid 2 ---------");
 console.log(sortedSquare_by_method2([]));
-console.log(sortedSquare_by_method2([1,3,5]));
-console.log(sortedSquare_by_method2([0,5,6]));
-console.log(sortedSquare_by_method2([-3,1,2,7]));
+console.log(sortedSquare_by_method2([1, 3, 5]));
+console.log(sortedSquare_by_method2([0, 5, 6]));
+console.log(sortedSquare_by_method2([-3, 1, 2, 7]));
 console.log(sortedSquare_by_method2([-7, -3, 2, 3, 11]));
+console.log(sortedSquare_by_method2([-3, 1, 8, 6]));
+
+
+//! Q2 array is monotonic if it eather monotonic increasing or monotonic decreasing return true else false 
+
+function isMonotonic(array) {
+    let is_monotonic_increasing = true;
+    let is_monotonic_decreasing = true
+
+
+    for (let i = 1; i < array.length; i++) {
+        if (array[i] < array[i - 1]) {
+            is_monotonic_increasing = false
+        }
+        if (array[i] > array[i - 1]) {
+            is_monotonic_decreasing = false
+        }
+    }
+
+    return is_monotonic_increasing || is_monotonic_decreasing
+
+
+}
+
+console.log("-------- monotonic ------");
+console.log(isMonotonic([]));
+console.log(isMonotonic([10]));
+console.log(isMonotonic([1, 2, 2, 3]));
+console.log(isMonotonic([6, 5, 4, 4]));
+console.log(isMonotonic([1, 3, 2]));
+
